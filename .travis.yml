@@ -1,10 +1,16 @@
 language: scala
 
-script:
- - sbt ++$TRAVIS_SCALA_VERSION test publishSigned
+jobs:
+ include:
+  - stage: test
+    script: sbt ++$TRAVIS_SCALA_VERSION test publishSigned
+  - stage: release
+    script: sbt ++$TRAVIS_SCALA_VERSION sonatypeRelease
 
-scala:
- - 2.12.13
+stages:
+ - test
+ - name: release
+   if: tag IS present
 
 env:
  global:
