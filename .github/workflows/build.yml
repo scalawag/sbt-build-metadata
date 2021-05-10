@@ -1,0 +1,24 @@
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
+      SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+      SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Test
+        run: sbt test
+      - name: Publish
+        run: sbt publishSigned
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/')
+        run: sbt sonatypeRelease

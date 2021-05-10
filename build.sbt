@@ -24,5 +24,3 @@ scalacOptions ++= Seq("-feature", "-deprecation")
 addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "1.0.0")
 
 ThisBuild / versionScheme := Some("semver-spec")
-
-travisMode := true

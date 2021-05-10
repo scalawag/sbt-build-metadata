@@ -24,4 +24,4 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "1.0.0")
 
 addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.7")
 
-addSbtPlugin("org.scalawag.sbt" %% "sbt-git-series" % "0.1.0-pre.5")
+addSbtPlugin("org.scalawag.sbt" %% "sbt-git-series" % "0.1.0-pre.8")
